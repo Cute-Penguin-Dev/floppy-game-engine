@@ -1,0 +1,21 @@
+syntax: glob
+
+# Emacs backup and autosave files
+*~
+\#*\#
+.\#*
+
+# Emacs project and state files
+.elc
+.projectile
+.ede
+/cedet/
+TAGS
+
+# Scheme / Compiled junk (if applicable to your renderer)
+*.o
+*.so
+*.a
+
+# OS junk
+.DS_Store
