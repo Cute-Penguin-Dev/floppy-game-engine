@@ -33,7 +33,7 @@
 						     128
 						     128
 						     32
-						     512)))
+						     0)))
 
 				   (xsetforeground display graphics-context black)
 				   (xselectinput display window STRUCTURENOTIFYMASK)

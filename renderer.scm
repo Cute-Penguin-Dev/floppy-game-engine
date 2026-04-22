@@ -3,7 +3,7 @@
      reset-fb
      draw-rectangle
      draw-image
-     fb-length
+     init-fb
      rgb-length
      rgba-length
      sync-fb-to-x11-memory
@@ -27,17 +27,29 @@
 	  (chicken locative))
   
   ;; constants
-  (define fb-length 128)
+  (define fb-width 0)
+  (define fb-heigth 0)
+  (define fb-width-no-scale 0)
+  (define fb-heigth-no-scale 0)
   (define rgb-length 4)
   (define rgba-length 8)
-
+  
   ;; the frame buffer it's self
 
-  (define fb-locative (allocate (* fb-length fb-length rgb-length)))
-
+  (define fb-locative '())
   
-  (define fb (make-u8vector (* fb-length fb-length rgb-length) #x00))
+  (define fb (make-u8vector 0 0))
 
+  (define init-fb
+    (lambda (width heigth scale)
+      (set! fb (make-u8vector (* width heigth rgb-length) #x00))
+      (set! fb-locative (allocate (* width heigth rgb-length)))
+      (set! fb-width width)
+      (set! fb-heigth heigth)
+      (set! fb-width-no-scale (quotient width scale))
+      (set! fb-heigth-no-scale (quotient heigth scale))
+      ))
+  
   (define sync-fb-to-x11-memory
     (lambda ()
       (move-memory! fb fb-locative)))
@@ -45,14 +57,14 @@
   ;; converts a xy pos to an rgb three byte  index of the frame buffer
   (define x-y-to-index
     (lambda (x y)
-      (* (+ (* y fb-length) x) rgb-length)
+      (* (+ (* y fb-heigth-no-scale) x) rgb-length)
       ))
 
   ;; sets a framebuffer pixel taking in BRGA BGRA BGRA eight byte args
   (define set-pixel
     (lambda (x y r g b a)
 
-      (let* ((pixel (get-pixel-rgb fb x y fb-length))
+      (let* ((pixel (get-pixel-rgb fb x y))
 	     (dst-red (list-ref pixel 0))
 	     (dst-green (list-ref pixel 1))
 	     (dst-blue (list-ref pixel 2)))
@@ -66,11 +78,11 @@
 
   ;; gets a pixel from an rgb frame buffer
   (define get-pixel-rgb
-    (lambda (pixels x y w)
+    (lambda (pixels x y)
       (list
-       (u8vector-ref pixels (* (+ (* y w) x) rgb-length))
-       (u8vector-ref pixels (+ (* (+ (* y w) x) rgb-length) 1))
-       (u8vector-ref pixels (+ (* (+ (* y w) x) rgb-length) 2))
+       (u8vector-ref pixels (x-y-to-index x y))
+       (u8vector-ref pixels (+ (x-y-to-index x y) 1))
+       (u8vector-ref pixels (+ (x-y-to-index x y) 2))
        )
       ))
 

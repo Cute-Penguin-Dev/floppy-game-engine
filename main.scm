@@ -14,8 +14,8 @@
 (define update-image
   (lambda ()
     (thread-start! (lambda ()
+		     (init-fb 128 128 1)
 		     (reset-fb)
-		     (draw-image (load-image "test.ff") 0 0)
 		     (pass-buffers)
 		     (let draw-loop ((color 128))
 		       (if (= color 255) (set! color 0))

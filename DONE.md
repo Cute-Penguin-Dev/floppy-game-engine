@@ -8,3 +8,4 @@
 - put fb pixels on the x11 window with `xcreateimage` and `xputimage`
 - add game loop
 - stop the repl from closing when window closes
+

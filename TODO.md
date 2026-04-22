@@ -1,20 +1,16 @@
 # Markdown Kanban
 
 ## Complete (flush out to DONE.md every Monday with an even date)
-- learning "enough x11"
-- adding load.scm
-- transferring renderer from rgba pixels to bgra
-- create x11 window
-- put fb pixels on the x11 window with `xcreateimage` and `xputimage`
-- add game loop
-- stop the repl from closing when window closes
+- clean up project folder and switch to mecurial
 
 ## In Progress
+- add `init-fb` function to init the fb and allow to set the fb size
 
 ## Will Do
-- clean up project folder and switch to mecurial
-- upscale pixels
-
+- clean up `interface.scm`
+- change x11 window size depending on the fb size
+- add function `upscale-fb` to loop over fb pixels ond upscale
+- rename `pass-buffers` function
 
 ## Potential Ideas For Bored Days (Backlog)
 - add backbuffering
@@ -24,4 +20,3 @@
 - add mouse support
 - add audio
 - lines/shape drawing
-
