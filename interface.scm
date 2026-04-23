@@ -6,8 +6,8 @@
 	  x11-backend
 	  renderer-logic)
 
-  (define pass-buffers
-    (lambda ()
-      (create-window)
+  (define create-app-window
+    (lambda (width heigth)
+      (create-window width heigth)
       ))
   )

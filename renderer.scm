@@ -33,7 +33,7 @@
   (define fb-heigth-no-scale 0)
   (define rgb-length 4)
   (define rgba-length 8)
-  
+
   ;; the frame buffer it's self
 
   (define fb-locative '())

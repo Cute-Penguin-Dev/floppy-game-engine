@@ -2,9 +2,10 @@
 
 ## Complete (flush out to DONE.md every Monday with an even date)
 - clean up project folder and switch to mecurial
+- add `init-fb` function to init the fb and allow to set the fb size
 
 ## In Progress
-- add `init-fb` function to init the fb and allow to set the fb size
+- fix zombie main thread not closing when `close-app` is called
 
 ## Will Do
 - clean up `interface.scm`

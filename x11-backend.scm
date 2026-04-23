@@ -16,11 +16,11 @@
     (lambda ()
       (set! should-close #t)))
   (define create-window
-    (lambda ()
+    (lambda (width heigth)
       (thread-start! (lambda ()  (let* ((display (xopendisplay #f))
 					(black (xblackpixel display (xdefaultscreen display)))
 					(white (xwhitepixel display (xdefaultscreen display)))
-					(window (xcreatesimplewindow display (xdefaultrootwindow display) 0 0 128 128 0 black white))
+					(window (xcreatesimplewindow display (xdefaultrootwindow display) 0 0 width heigth 0 black white))
 					(graphics-context (xcreategc display window 0 #f))
 					(xeventslot (make-xevent))
 					(ximageslot (xcreateimage
@@ -30,8 +30,8 @@
 						     ZPIXMAP
 						     0
 						     (return-fb-locative) ;fix
-						     128
-						     128
+						     width
+						     heigth
 						     32
 						     0)))
 
@@ -62,8 +62,8 @@
 							    0
 							    0
 							    0
-							    128
-							    128
+							    width
+							    heigth
 							    )))
 					   (xsync display 0)
 					   (thread-sleep! 0.01)
