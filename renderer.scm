@@ -108,7 +108,7 @@
 	  (set-pixel x y r g b a)
 	  )
 	)
-      ))
+  ))
 
   ;; clears the frame buffer
   (define reset-fb
@@ -126,7 +126,7 @@
 	(close-input-port input-port)
 	image-fb
 	)
-      ))
+  ))
 
   ;; parses the farbfield image header
   (define parse-image-header
@@ -176,7 +176,7 @@
 	    )
 	  )
 	)
-      ))
+  ))
 
   (define return-fb
     (lambda ()

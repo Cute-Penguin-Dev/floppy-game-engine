@@ -10,4 +10,8 @@
     (lambda (width heigth)
       (create-window width heigth)
       ))
+
+  (define should-close-app-window?
+    (lambda ()
+    	(is-app-closed?)))
   )

@@ -36,6 +36,7 @@
 						     0)))
 
 				   (xsetforeground display graphics-context black)
+				   (set! should-close #f)
 				   (xselectinput display window STRUCTURENOTIFYMASK)
 				   (xmapwindow display window)
 				   
@@ -70,8 +71,15 @@
 					   (event-loop)
 					   )
 					 (begin
-					   (set! should-close #f)
 					   (xclosedisplay display))))
 				   
 				   )))
-      )))
+      ))
+      
+      (define is-app-closed?
+        (lambda ()
+          should-close
+          ))
+
+	)
+
