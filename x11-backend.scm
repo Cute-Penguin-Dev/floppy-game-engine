@@ -67,7 +67,7 @@
 							    heigth
 							    )))
 					   (xsync display 0)
-					   (thread-sleep! 0.01)
+					   (thread-yield!)
 					   (event-loop)
 					   )
 					 (begin

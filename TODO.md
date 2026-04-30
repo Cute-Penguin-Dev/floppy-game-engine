@@ -12,6 +12,7 @@
 - add function `upscale-fb` to loop over fb pixels ond upscale
 
 ## Will Do
+- comment out my code
 
 ## Potential Ideas For Bored Days (Backlog)
 - add backbuffering
