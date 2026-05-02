@@ -7,17 +7,18 @@
 - fix zombie main thread not closing when `close-app` is called
 - rename `pass-buffers` function
 - clean up `interface.scm`
-
-## In Progress
 - add function `upscale-fb` to loop over fb pixels ond upscale
 
+## In Progress
+- do research on how x11 handles keyinput
+
 ## Will Do
+- implement x11 key input code
 - comment out my code
 
 ## Potential Ideas For Bored Days (Backlog)
 - add backbuffering
 - add fps stablizing for x11 window
-- add keyborad input
 - add windows backend
 - add mouse support
 - add audio

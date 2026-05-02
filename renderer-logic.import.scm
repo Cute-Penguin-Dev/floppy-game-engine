@@ -4,16 +4,19 @@
   (lambda ()
     (##sys#register-compiled-module
       'renderer-logic
-      'renderer-logic
+      'renderer
       (scheme#list)
       '((load-image . renderer-logic#load-image)
         (reset-fb . renderer-logic#reset-fb)
         (draw-rectangle . renderer-logic#draw-rectangle)
         (draw-image . renderer-logic#draw-image)
-        (fb-length . renderer-logic#fb-length)
+        (init-fb . renderer-logic#init-fb)
         (rgb-length . renderer-logic#rgb-length)
         (rgba-length . renderer-logic#rgba-length)
-        (return-fb . renderer-logic#return-fb))
+        (sync-fb-to-x11-memory . renderer-logic#sync-fb-to-x11-memory)
+        (return-fb . renderer-logic#return-fb)
+        (return-fb-locative . renderer-logic#return-fb-locative)
+        (upscale-fb . renderer-logic#upscale-fb))
       (scheme#list)
       (scheme#list)
       (scheme#list))))
