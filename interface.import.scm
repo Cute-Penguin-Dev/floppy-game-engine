@@ -6,12 +6,10 @@
       'interface
       'interface
       (scheme#list)
-      '((key-right-pressed? . interface#key-right-pressed?)
-        (key-left-pressed? . interface#key-left-pressed?)
-        (key-down-pressed? . interface#key-down-pressed?)
-        (key-up-pressed? . interface#key-up-pressed?)
-        (should-close-app-window? . interface#should-close-app-window?)
-        (create-app-window . interface#create-app-window))
+      '((should-close-app-window? . interface#should-close-app-window?)
+        (create-app-window . interface#create-app-window)
+        (set-backend . interface#set-backend)
+        (rendering-backend . interface#rendering-backend))
       (scheme#list)
       (scheme#list)
       (scheme#list))))

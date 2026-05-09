@@ -1,3 +1,5 @@
+(declare (unit x11-backend))
+
 (module x11-backend *
   (import scheme
 	  (srfi 160 u8)
@@ -5,8 +7,8 @@
 	  (chicken locative)
 	  (chicken format)
 	  (chicken io)
-	  (renderer-logic)
-	  (srfi-18)
+	  renderer-logic
+	  srfi-18
 	  (chicken bitwise)
           xlib)
 

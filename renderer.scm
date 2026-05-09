@@ -1,3 +1,5 @@
+(declare (unit renderer))
+
 (module renderer-logic
     (load-image
      reset-fb
@@ -24,7 +26,7 @@
 	  (chicken memory)
 	  (chicken blob)
     (chicken file)
-	  (srfi 160 u8)	  (chicken locative))
+	  (srfi.160.u8)	  (chicken locative))
   
   ;; constants
   (define fb-width 0)

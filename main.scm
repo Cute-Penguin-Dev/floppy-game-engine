@@ -1,3 +1,8 @@
+(declare (uses renderer)
+         (uses x11-backend)
+         (uses minifb-backend)
+         (uses interface))
+
 (import (chicken io)
 	(chicken format)
 	(only srfi-4 read-u8vector!)
@@ -10,12 +15,14 @@
 	renderer-logic
 	interface)
 
+(define should-close #f)
 ;; a nice wrapper function to wrap all the functions nicely
 (define update-image
   (lambda ()
     (thread-start! (lambda ()
 		     (init-fb 512 512 8)
 		     (reset-fb)
+		     (set-backend 'minifb)
 		     (create-app-window 512 512)
 		     (thread-sleep! 1)
 		     (let ((image (load-image "image.ff")))
@@ -23,9 +30,9 @@
 				     	 (if (not (should-close-app-window?))
 				     	   (begin 
 									 (if (key-up-pressed?) (set! ypos (- ypos 0.125)))
-									 (if (key-down-pressed?) (set! ypos (+ ypos 0.125)))
-									 (if (key-left-pressed?) (set! xpos (- xpos 0.125)))
-									 (if (key-right-pressed?) (set! xpos (+ xpos 0.125)))
+;									 (if (key-down-pressed?) (set! ypos (+ ypos 0.125)))
+;									 (if (key-left-pressed?) (set! xpos (- xpos 0.125)))
+;									 (if (key-right-pressed?) (set! xpos (+ xpos 0.125)))
 									 (if (= color 255) (set! color 0))
 				    		   (reset-fb)
 				  	    	 (draw-rectangle 0 0 32 32 (inexact->exact (round color)) 0 0 255)
@@ -37,11 +44,11 @@
 				     	   )
 				       )
 				     )
-		     ))
+		     )
+         (set! should-close #t) 
+		     )
     )))
 ;; fix threads
 (update-image)
 	
- (let loop ()
-   (thread-sleep! 1)
-   (loop))
+(letrec ((loop (lambda () (if (not should-close) (loop))))) (loop))
