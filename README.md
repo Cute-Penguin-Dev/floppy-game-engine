@@ -1,4 +1,4 @@
-# This is a game enigne in Chicken Scheme
+# This is a game engine in Chicken Scheme
 
 I named it floppy because that was the first name which came to me but I will change it.
 Right now, it has features like drawing rectangles/images and it has an x11 backend
